@@ -1,0 +1,12 @@
+---
+- name: install supervisord package
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - supervisor
+
+- name: remove supervisor conf folders
+  file: path=/etc/supervisor/conf.d state=absent
+
+- name: supervisor conf/d symlink
+  file: src=/home/live/confs/prod/supervisord/conf.d dest=/etc/supervisor/conf.d state=link force=yes
+  notify: restart supervisor
