@@ -22,7 +22,7 @@ Example Playbook
 
     - hosts: servers
       roles:
-         - { role: loranger.debian-pflogsumm }
+         - { role: cowops.debian-pflogsumm }
 
 Tasks
 -----
