@@ -1,8 +1,11 @@
 ---
 - name: install supervisord package
-  apt: pkg={{ item }} state=latest
-  with_items:
-    - supervisor
+  apt:
+    name: {{ packages }}
+    state: latest
+  vars:
+    packages:
+      - supervisor
 
 - name: remove supervisor conf folders
   file: path=/etc/supervisor/conf.d state=absent
